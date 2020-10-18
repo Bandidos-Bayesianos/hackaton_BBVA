@@ -2,6 +2,12 @@
 Aquí se encuentra todo el código para reproducir el resultado del reto **Identificación de datos de fraude**
 
 - Nombre: El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
+
+ desc_text    |desc_id | Resultado
+ ------------------------------------
+ brittaprando | BrPr	 | Britta Prando
+ brittaprando | BrPr	 | Britta Prando
+ 
 - Tarjeta de crédito:	Concatenar columnas producto_1_number y bin_2 number, convertir el resultado de binario a decimal para obtener los primeros 6 dígitos de la TDC. Los 10 números restantes se obtienen de la columna tel_id.
 - Dirección:	Invertir dirección de la cadena de caracteres y separar números de letras, así como palabras mediante el uso de letras mayúsculas.
 - Fecha de nacimiento:	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 

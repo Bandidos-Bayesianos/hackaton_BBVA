@@ -3,17 +3,16 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 
 - Nombre: El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
 
- desc_text    |desc_id | Names
- -------------|--------|------------
- lisbethhallewell | LiHa	 | lisbeth hallewell
- mellielowde | MeLo	 | mellie lowde
- krispinmundie  | KrMu    |galen kayne
- galenkayne    |GaKa |   krispin mundie
-  mellielowde   | MeLo  | maribel brecher
-  natyeudall    |NaYe      | nat yeudall
+|desc_text        |desc_id |Names             |
+|:----------------|:-------|:-----------------|
+|galenkayne       |GaKa    |galen kayne       |
+|krispinmundie    |KrMu    |krispin mundie    |
+|lisbethhallewell |LiHa    |lisbeth hallewell |
+|maribelbrecher   |MaBr    |maribel brecher   |
+|mellielowde      |MeLo    |mellie lowde      |
+|natyeudall       |NaYe    |nat yeudall       |
  
 - Tarjeta de crédito:	Concatenar columnas producto_1_number y bin_2 number, convertir el resultado de binario a decimal para obtener los primeros 6 dígitos de la TDC. Los 10 números restantes se obtienen de la columna tel_id.
-
 
 | producto_1_number|bin_2_number |tel_id       |CreditCard          |
 |-----------------:|:------------|:------------|:-------------------|
@@ -27,49 +26,58 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 
 - Dirección:	Invertir dirección de la cadena de caracteres y separar números de letras, así como palabras mediante el uso de letras mayúsculas.
 
-correo_id| Resultado
----------|---------
-ecarreTevorglleB252 |252 Bellgrove Terrace
-yellAokpohS315 | 513 Shopko Alley
-enaLuaedaB1 |Charing Cross Hill
-lliHssorCgnirahC97 |1 Badeau Lane
-noitcnuJtsaE4247   |7424 East Junction
+|correo_id           |Address               |
+|:-------------------|:---------------------|
+|lliHssorCgnirahC97  |79 Charing Cross Hill |
+|enaLuaedaB1         |1 Badeau Lane         |
+|ecarreTevorglleB252 |252 Bellgrove Terrace |
+|evirDenotsdleiF76   |67 Fieldstone Drive   |
+|yellAokpohS315      |513 Shopko Alley      |
+|noitcnuJtsaE4247    |7424 East Junction    |
 
 - Fecha de nacimiento:	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 
 
-
-clave_id| registro.xls| Resultado
----------|------------|-------
-761006 | Version197610.xls |1954-04-17
-540417 |Version195404.xls |1977-11-28
-400829 |Version194008.xls |1948-07-29
-480729 |Version194807.xls |1940-08-29
-771128 |Version197711.xls |1976-10-06
-960429 |Version199604.xls |1996-04-29
+|clave_id |registro.xls      |Birthday   |
+|:--------|:-----------------|:----------|
+|480729   |Version194807.xls |1948-07-29 |
+|400829   |Version194008.xls |1940-08-29 |
+|540417   |Version195404.xls |1954-04-17 |
+|761006   |Version197610.xls |1976-10-06 |
+|771128   |Version197711.xls |1977-11-28 |
+|960429   |Version199604.xls |1996-04-29 |
 
 - E-mail:	La parte identificadora del correo se conforma de la primera letra del nombre y el apellido. Para ocultar la información se añadieron caracteres al final en base 37 (0-9 y a-z). Para la parte del dominio combinamos con la columna apellido@_text en donde reemplazamos el caracter ! con '.com'. 
 
-nombre_text| apellid@_text| Resultado
----------|------------|-------
-mbrecherqe | marketwatch! lhallewell@discovery.com
- lhallewell3ub  |  discovery!   |        mlowde@163.com
-    kmundie4i8   |  yolasite!   |      gkayne@ifeng.com
-     gkayne52e   |     ifeng!   |  kmundie@yolasite.com
-     mlowde5tb   |       163! | mbrecher@marketwatch.com
-   nyeudall7bu  |  artisteer!  |  nyeudall@artisteer.com
+|nombre_text   |apellid@_text |Email                    |
+|:-------------|:-------------|:------------------------|
+|gkayne52e     |ifeng!        |gkayne@ifeng.com         |
+|kmundie4i8    |yolasite!     |kmundie@yolasite.com     |
+|lhallewell3ub |discovery!    |lhallewell@discovery.com |
+|mbrecherqe    |marketwatch!  |mbrecher@marketwatch.com |
+|mlowde5tb     |163!          |mlowde@163.com           |
+|nyeudall7bu   |artisteer!    |nyeudall@artisteer.com   |
 
 - Teléfono móvil:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
 
-clave_secundaria_text| Resultado
----------|---------
- +EBO AOl 99S 7769   |+56 823 794 8863
- +EBO AOl 99S 7769   |+56 823 794 8863
+|clave_secundaria_text |CellPhone         |
+|:---------------------|:-----------------|
+|+SB ZZO B6l AZZ9      |+58 220 861 4229  |
+|+ESl E99 B97 lESB     |+351 399 897 1358 |
+|+EBO AOl 99S 7769     |+380 401 995 7769 |
+|+6E l66 BSO 977B      |+63 166 850 9778  |
+|+EE 6A7 ESS AZEA      |+33 647 355 4234  |
+|+EBO 66E Zll lSBB     |+380 663 211 1588 |
 
 -Teléfono fijo:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
-clave_primaria_text| Resultado
----------|---------
- B6(A9A)E70-7A0B   |+56 823 794 8863
-  B6(A9A)E70-7A0B  |86(494)370-7408 
+
+|clave_primaria_text |Phone            |
+|:-------------------|:----------------|
+|A6(7SZ)1E9-AE19     |46(752)139-4319  |
+|6E(EBA)1E6-9Z97     |63(384)136-9297  |
+|ES1(16S)AA0-0ABA    |351(165)440-0484 |
+|B6(7Z9)AB1-Z607     |86(729)481-2607  |
+|B6(A9A)E70-7A0B     |86(494)370-7408  |
+|6E(ZEB)ES9-6E79     |63(238)359-6379  |
 
 - CURP:	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. *Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.*
 

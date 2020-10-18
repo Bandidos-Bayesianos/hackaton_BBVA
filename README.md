@@ -3,7 +3,7 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 
 - Nombre: El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
 
- desc_text    |desc_id | Resultado
+ desc_text    |desc_id | Names
  -------------|--------|------------
  lisbethhallewell | LiHa	 | lisbeth hallewell
  mellielowde | MeLo	 | mellie lowde
@@ -26,27 +26,37 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 correo_id| Resultado
 ---------|---------
 ecarreTevorglleB252 |252 Bellgrove Terrace
+yellAokpohS315 | 513 Shopko Alley
 
 - Fecha de nacimiento:	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 
 
 
 clave_id| registro.xls| Resultado
 ---------|------------|-------
-430219|Version194302.xls |194302
+ 540417  |Version194302.xls |1954-04-17
+771128|Version197711.xls |1977-11-28
 
 - E-mail:	La parte identificadora del correo se conforma de la primera letra del nombre y el apellido. Para ocultar la información se añadieron caracteres al final en base 37 (0-9 y a-z). Para la parte del dominio combinamos con la columna apellido@_text en donde reemplazamos el caracter ! con '.com'. 
 
-clave_id| registro.xls| Resultado
+"nombre_text
+
+nombre_text| apellid@_text| Resultado
 ---------|------------|-------
-430219|Version194302.xls |1943-02-19
+lhallewell3ub|discovery!  |lhallewell@discovery.com
+mlowde5tb |163!  |mlowde@163.com
 
 - Teléfono móvil:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
 
-correo_id| Resultado
+clave_secundaria_text| Resultado
 ---------|---------
  +EBO AOl 99S 7769   |+56 823 794 8863
 
 -Teléfono fijo:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
+clave_primaria_text| Resultado
+---------|---------
+ B6(A9A)E70-7A0B   |+56 823 794 8863
+  B6(A9A)E70-7A0B  |86(494)370-7408 
+
 - CURP:	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. *Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.*
 
 |desc_text        |desc_id |clave_id |registro.xls      |agrupacion_id |CURP |CURP_generado        |

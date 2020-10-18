@@ -5,7 +5,8 @@ Aquí se encuentra el código para reproducir el resultado al reto **Identificac
 - [Vídeo](https://youtu.be/4LMIdqE8Urc).
 - [Dataset](https://s3.console.aws.amazon.com/s3/buckets/bbva-hack-2020/outputs/reconstructed_full.parquet/?region=us-east-2&tab=overview). Para el cual se debe ocupar el usuario **guest** con clave **guesthack** y account alias **201513274994**.
 
-### Descripción del reto y approach
+### Descripción del reto y solución
+
 En dicho reto se nos compartió una base de datos con 3M de registros y el objetivo era encontrar las reglas de identificación de algunos campos que un ente malicioso había ocultado, con la finalidad de robar la información. Nuestra solución utiliza herramientas de cómputo distribuido que desarrollamos en un entorno local, utilizando un contenedor con todas las herramientas y frameworks necesarios para que la solución sea portable y escalable en un entorno de computación en la nube. En particular, decidimos usar Amazon Sagemaker, por lo que el contenedor lo subimos a Amazon Container Registry.
 
 Lo primero que hicimos para generar esta solución fue en un prototipo rápido y escalable basado en funciones lambdas que de manera secuencial recorren el archivo y generan un csv con los datos procesados; esto tiene como ventaja que hacer uso de tecnologías como aws batch se vuelve más facil para procesamiento posterior. Una vez hecha y probada la solución sobre una muestra de los datos, pusimos el código de nuestra solución en un repositorio público y lo clonamos en Amazon SageMaker Studio. Desde ahí, pudimos invocar el trabajo generado mediante ScriptProcessor utilizando el conjunto entero de los datos, que previamente alojamos en Amazon S3. Los datos reconstruidos después de aplicar nuestra solución los almacenamos también en Amazon S3 y los descargamos para inspeccionar. 

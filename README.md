@@ -1,5 +1,8 @@
-# hackaton_BBVA
-Aquí se encuentra todo el código para reproducir el resultado del reto **Identificación de datos de fraude**
+# Hackaton BBVA. Bandidos Bayesianos
+
+Aquí se encuentra el código para reproducir el resultado al reto **Identificación de datos de fraude** que generamos durante nuestra participación en el **Hackatón BBVA 2020**. El reporte de resultados se puede encontrar en la siguiente liga:
+
+https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gid=1957317044
 
 - Nombre: El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
 
@@ -79,7 +82,7 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 |B6(A9A)E70-7A0B     |86(494)370-7408  |
 |6E(ZEB)ES9-6E79     |63(238)359-6379  |
 
-- CURP:	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. *Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.*
+- CURP:	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. **Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.**
 
 |desc_text        |desc_id |clave_id |registro.xls      |agrupacion_id |CURP.y |CURP.x             |
 |:----------------|:-------|:--------|:-----------------|:-------------|:------|:------------------|
@@ -101,7 +104,7 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 |mellielowde      |MeLo    |771128   |Version197711.xls |MDF           |LOXM771128MDFWXL08 |         906|
 |natyeudall       |NaYe    |960429   |Version199604.xls |HDF           |YEXN960429HDFDX06  |         207|
 
-- RFC:	Con el nombre y la fecha de nacimiento que obtuvimos utilizamos una función que calcula el RFC. *Sabemos que en la columna producto_id se encuentra la homoclave, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.*
+- RFC:	Con el nombre y la fecha de nacimiento que obtuvimos utilizamos una función que calcula el RFC. **Sabemos que en la columna producto_id se encuentra la homoclave, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.**
 
 |desc_text        |desc_id |clave_id |registro.xls      |producto_id |RFC           |
 |:----------------|:-------|:--------|:-----------------|:-----------|:-------------|

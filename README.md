@@ -7,6 +7,10 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
  -------------|--------|------------
  lisbethhallewell | LiHa	 | lisbeth hallewell
  mellielowde | MeLo	 | mellie lowde
+ krispinmundie  | KrMu    |galen kayne
+ galenkayne    |GaKa |   krispin mundie
+  mellielowde   | MeLo  | maribel brecher
+  natyeudall    |NaYe      | nat yeudall
  
 - Tarjeta de crédito:	Concatenar columnas producto_1_number y bin_2 number, convertir el resultado de binario a decimal para obtener los primeros 6 dígitos de la TDC. Los 10 números restantes se obtienen de la columna tel_id.
 
@@ -49,6 +53,7 @@ mlowde5tb |163!  |mlowde@163.com
 
 clave_secundaria_text| Resultado
 ---------|---------
+ +EBO AOl 99S 7769   |+56 823 794 8863
  +EBO AOl 99S 7769   |+56 823 794 8863
 
 -Teléfono fijo:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.

@@ -1,7 +1,8 @@
 # Hackaton BBVA. Bandidos Bayesianos
 
 Aquí se encuentra el código para reproducir el resultado al reto **Identificación de datos de fraude** que generamos durante nuestra participación en el **Hackatón BBVA 2020**. El reporte de resultados se encuentra en este [documento](https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gid=1957317044)  y en este [vídeo](https://youtu.be/4LMIdqE8Urc) hay una breve descripción del trabajo realizado.
-El usuario temporal de acceso al notebok (aws)
+El usuario temporal de acceso al notebok (aws):
+
 usuario para entrar al bucket: guest
 pw: guesthack
 

@@ -5,10 +5,11 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 
  desc_text    |desc_id | Resultado
  -------------|--------|------------
- brittaprando | BrPr	 | Britta Prando
- brittaprando | BrPr	 | Britta Prando
+ lisbethhallewell | LiHa	 | lisbeth hallewell
+ mellielowde | MeLo	 | mellie lowde
  
 - Tarjeta de crédito:	Concatenar columnas producto_1_number y bin_2 number, convertir el resultado de binario a decimal para obtener los primeros 6 dígitos de la TDC. Los 10 números restantes se obtienen de la columna tel_id.
+
 
 | producto_1_number|bin_2_number |tel_id       |CreditCard          |
 |-----------------:|:------------|:------------|:-------------------|
@@ -19,10 +20,32 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 |        1111111100|100000010    |33-6970 6390 |2711 6745 0651 7589 |
 |        1000010110|1010100100   |10-4759 6597 |5474 9210 4759 6597 |
 
+
 - Dirección:	Invertir dirección de la cadena de caracteres y separar números de letras, así como palabras mediante el uso de letras mayúsculas.
+
+correo_id| Resultado
+---------|---------
+ecarreTevorglleB252 |252 Bellgrove Terrace
+
 - Fecha de nacimiento:	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 
+
+
+clave_id| registro.xls| Resultado
+---------|------------|-------
+430219|Version194302.xls |194302
+
 - E-mail:	La parte identificadora del correo se conforma de la primera letra del nombre y el apellido. Para ocultar la información se añadieron caracteres al final en base 37 (0-9 y a-z). Para la parte del dominio combinamos con la columna apellido@_text en donde reemplazamos el caracter ! con '.com'. 
+
+clave_id| registro.xls| Resultado
+---------|------------|-------
+430219|Version194302.xls |1943-02-19
+
 - Teléfono móvil:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
+
+correo_id| Resultado
+---------|---------
+ +EBO AOl 99S 7769   |+56 823 794 8863
+
 -Teléfono fijo:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
 - CURP:	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. *Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.*
 

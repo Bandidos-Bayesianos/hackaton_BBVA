@@ -8,3 +8,4 @@ Cada lambda genera un csv con los datos procesados, 1 por cada lambda que se eje
 
 A continuacion es presentado un diagrama de como funciona la solución de forma serverless. Cabe notar que el siguiente paso en esta solucion es generar lambdas que funcionen en paralelo para su ejecución más rapida.
 
+![alt text](images/serverless.png)

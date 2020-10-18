@@ -4,6 +4,7 @@ Aquí se encuentra el código para reproducir el resultado al reto **Identificac
 El usuario temporal de acceso al notebok (aws):
 
 usuario para entrar al bucket: guest
+
 pw: guesthack
 
 En dicho reto se nos compartió una base de datos con 3M de registros y el objetivo era encontrar las reglas de identificación de algunos campos que un ente malicioso había ocultado, con la finalidad de robar la información. Nuestra solución utiliza herramientas de cómputo distribuido que desarrollamos en un entorno local, utilizando un contenedor con todas las herramientas y frameworks necesarios con la finalidad de que la solución sea portable y escalable en un entorno de computación en la nube. 

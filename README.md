@@ -4,7 +4,7 @@ Aquí se encuentra todo el código para reproducir el resultado del reto **Ident
 - Nombre: El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
 
  desc_text    |desc_id | Resultado
- ------------------------------------
+ -------------|--------|------------
  brittaprando | BrPr	 | Britta Prando
  brittaprando | BrPr	 | Britta Prando
  

@@ -31,23 +31,32 @@ correo_id| Resultado
 ---------|---------
 ecarreTevorglleB252 |252 Bellgrove Terrace
 yellAokpohS315 | 513 Shopko Alley
+enaLuaedaB1 |Charing Cross Hill
+lliHssorCgnirahC97 |1 Badeau Lane
+noitcnuJtsaE4247   |7424 East Junction
 
 - Fecha de nacimiento:	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 
 
 
 clave_id| registro.xls| Resultado
 ---------|------------|-------
- 540417  |Version194302.xls |1954-04-17
-771128|Version197711.xls |1977-11-28
+761006 | Version197610.xls |1954-04-17
+540417 |Version195404.xls |1977-11-28
+400829 |Version194008.xls |1948-07-29
+480729 |Version194807.xls |1940-08-29
+771128 |Version197711.xls |1976-10-06
+960429 |Version199604.xls |1996-04-29
 
 - E-mail:	La parte identificadora del correo se conforma de la primera letra del nombre y el apellido. Para ocultar la información se añadieron caracteres al final en base 37 (0-9 y a-z). Para la parte del dominio combinamos con la columna apellido@_text en donde reemplazamos el caracter ! con '.com'. 
 
-"nombre_text
-
 nombre_text| apellid@_text| Resultado
 ---------|------------|-------
-lhallewell3ub|discovery!  |lhallewell@discovery.com
-mlowde5tb |163!  |mlowde@163.com
+mbrecherqe | marketwatch! lhallewell@discovery.com
+ lhallewell3ub  |  discovery!   |        mlowde@163.com
+    kmundie4i8   |  yolasite!   |      gkayne@ifeng.com
+     gkayne52e   |     ifeng!   |  kmundie@yolasite.com
+     mlowde5tb   |       163! | mbrecher@marketwatch.com
+   nyeudall7bu  |  artisteer!  |  nyeudall@artisteer.com
 
 - Teléfono móvil:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
 

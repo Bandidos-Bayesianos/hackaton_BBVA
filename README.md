@@ -1,6 +1,7 @@
 # Hackaton BBVA. Bandidos Bayesianos
 
 Aquí se encuentra el código para reproducir el resultado al reto **Identificación de datos de fraude** que generamos durante nuestra participación en el **Hackatón BBVA 2020**. El reporte de resultados se encuentra en la siguiente liga:
+https://youtu.be/4LMIdqE8Urc
 
 https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gid=1957317044
 

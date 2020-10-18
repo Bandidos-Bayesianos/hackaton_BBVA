@@ -1,10 +1,14 @@
 # Hackaton BBVA. Bandidos Bayesianos
 
-Aquí se encuentra el código para reproducir el resultado al reto **Identificación de datos de fraude** que generamos durante nuestra participación en el **Hackatón BBVA 2020**. El reporte de resultados se puede encontrar en la siguiente liga:
+Aquí se encuentra el código para reproducir el resultado al reto **Identificación de datos de fraude** que generamos durante nuestra participación en el **Hackatón BBVA 2020**. El reporte de resultados se encuentra en la siguiente liga:
 
 https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gid=1957317044
 
-- Nombre: El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
+En dicho reto se nos compartió una base de datos con la finalidad de encontrar las reglas de identificación de 12 campos que un ente malicioso había ocultado, con la finalidad de robar la información. Nuestra solución utiliza herramientas de cómputo distribuido que desarrollamos en un entorno local, utilizando un contenedor con todas las herramientas y frameworks con la finalidad de que la solución sea portable y que pueda ser escalable en un entorno de computación en la nube. En particular, el contenedor lo subimos a Amazon Container Registry para poder ser utilizado después desde Amazon Sagemaker. Una vez hecha y probada la solución sobre una muestra de los datos, pusimos el código de nuestra solución en un repositorio público y lo clonamos en Amazon SageMaker Studio. Desde ahí, pudimos invocar el trabajo generado mediante ScriptProcessor de Amazon SageMaker utilizando el conjunto entero de los datos, que previamente alojamos en Amazon S3. Los datos reconstruidos después de aplicar nuestra solución los almacenamos también en Amazon S3 y los descargamos para inspeccionar. 
+
+A continuación se describen las reglas que generamos para encontrar dichos campos, así como algunos ejemplos ilustrativos.  
+
+- **Nombre:** El nombre y apellido están concatenados en la columna desc_text. Usamos la información en la columna desc_id, que indican las 2 primeras letras del nombre y las 2 primeras letras del apellido.
 
 |desc_text        |desc_id |Names             |
 |:----------------|:-------|:-----------------|
@@ -15,7 +19,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |mellielowde      |MeLo    |mellie lowde      |
 |natyeudall       |NaYe    |nat yeudall       |
  
-- Tarjeta de crédito:	Concatenar columnas producto_1_number y bin_2 number, convertir el resultado de binario a decimal para obtener los primeros 6 dígitos de la TDC. Los 10 números restantes se obtienen de la columna tel_id.
+- **Tarjeta de crédito:**	Concatenar columnas producto_1_number y bin_2 number, convertir el resultado de binario a decimal para obtener los primeros 6 dígitos de la TDC. Los 10 números restantes se obtienen de la columna tel_id.
 
 | producto_1_number|bin_2_number |tel_id       |CreditCard          |
 |-----------------:|:------------|:------------|:-------------------|
@@ -27,7 +31,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |        1000010110|1010100100   |10-4759 6597 |5474 9210 4759 6597 |
 
 
-- Dirección:	Invertir dirección de la cadena de caracteres y separar números de letras, así como palabras mediante el uso de letras mayúsculas.
+- **Dirección:**	Invertir dirección de la cadena de caracteres y separar números de letras, así como palabras mediante el uso de letras mayúsculas.
 
 |correo_id           |Address               |
 |:-------------------|:---------------------|
@@ -38,7 +42,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |yellAokpohS315      |513 Shopko Alley      |
 |noitcnuJtsaE4247    |7424 East Junction    |
 
-- Fecha de nacimiento:	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 
+- **Fecha de nacimiento:**	En el campo registro.xls, después de quitar las palabras "Version" y ".xls" encontramos el año_mes y después  en el campo clave_id corroboramos ambos datos y agregamos el día. Al final con el campo clave_id pasamos al formato yyyy-mm-dd. 
 
 |clave_id |registro.xls      |Birthday   |
 |:--------|:-----------------|:----------|
@@ -49,7 +53,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |771128   |Version197711.xls |1977-11-28 |
 |960429   |Version199604.xls |1996-04-29 |
 
-- E-mail:	La parte identificadora del correo se conforma de la primera letra del nombre y el apellido. Para ocultar la información se añadieron caracteres al final en base 37 (0-9 y a-z). Para la parte del dominio combinamos con la columna apellido@_text en donde reemplazamos el caracter ! con '.com'. 
+- **E-mail:**	La parte identificadora del correo se conforma de la primera letra del nombre y el apellido. Para ocultar la información se añadieron caracteres al final en base 37 (0-9 y a-z). Para la parte del dominio combinamos con la columna apellido@_text en donde reemplazamos el caracter ! con '.com'. 
 
 |nombre_text   |apellid@_text |Email                    |
 |:-------------|:-------------|:------------------------|
@@ -60,7 +64,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |mlowde5tb     |163!          |mlowde@163.com           |
 |nyeudall7bu   |artisteer!    |nyeudall@artisteer.com   |
 
-- Teléfono móvil:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
+- **Teléfono móvil:**	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
 
 |clave_secundaria_text |CellPhone         |
 |:---------------------|:-----------------|
@@ -71,7 +75,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |+EE 6A7 ESS AZEA      |+33 647 355 4234  |
 |+EBO 66E Zll lSBB     |+380 663 211 1588 |
 
--Teléfono fijo:	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
+- **Teléfono fijo:**	Convertir letras a números basados en LEET. Diccionario {'O':0,'I':1,'Z':2,'E':3,'A':4,'S':5,'B':8}.
 
 |clave_primaria_text |Phone            |
 |:-------------------|:----------------|
@@ -82,7 +86,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |B6(A9A)E70-7A0B     |86(494)370-7408  |
 |6E(ZEB)ES9-6E79     |63(238)359-6379  |
 
-- CURP:	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. **Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.**
+- **CURP:**	Con el nombre y fecha de nacimiento calculados, más el campos agrupacion_id, en el que está el sexo y estado, utilizamos una función que calcula el CURP. **Sabemos que en los datos existe la columna CURP en la que están los cinco digitos asignados, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.**
 
 |desc_text        |desc_id |clave_id |registro.xls      |agrupacion_id |CURP.y |CURP.x             |
 |:----------------|:-------|:--------|:-----------------|:-------------|:------|:------------------|
@@ -93,7 +97,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |mellielowde      |MeLo    |771128   |Version197711.xls |MDF           |ESM85  |LOXM771128MDFWXL08 |
 |natyeudall       |NaYe    |960429   |Version199604.xls |HDF           |LIJ50  |YEXN960429HDFDX06 
 
-- INE:	Utilizando el curp que calculamos y el campo cvv_secreto en el que encontramos el número aleatorio de tres dígitos (relleno con ceros) calculamos la clave de elector. 
+- **INE:**	Utilizando el curp que calculamos y el campo cvv_secreto en el que encontramos el número aleatorio de tres dígitos (relleno con ceros) calculamos la clave de elector. 
 
 |desc_text        |desc_id |clave_id |registro.xls      |agrupacion_id |CURP_generado      | CVV_secreto|
 |:----------------|:-------|:--------|:-----------------|:-------------|:------------------|-----------:|
@@ -104,7 +108,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |mellielowde      |MeLo    |771128   |Version197711.xls |MDF           |LOXM771128MDFWXL08 |         906|
 |natyeudall       |NaYe    |960429   |Version199604.xls |HDF           |YEXN960429HDFDX06  |         207|
 
-- RFC:	Con el nombre y la fecha de nacimiento que obtuvimos utilizamos una función que calcula el RFC. **Sabemos que en la columna producto_id se encuentra la homoclave, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.**
+- **RFC:**	Con el nombre y la fecha de nacimiento que obtuvimos utilizamos una función que calcula el RFC. **Sabemos que en la columna producto_id se encuentra la homoclave, pero decidimos no utilizar esta información dentro de nuestra respuesta pues consideramos más acertado hacerlo siguiendo las reglas estipuladas para calcular este dato.**
 
 |desc_text        |desc_id |clave_id |registro.xls      |producto_id |RFC           |
 |:----------------|:-------|:--------|:-----------------|:-----------|:-------------|
@@ -115,7 +119,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |mellielowde      |MeLo    |771128   |Version197711.xls |UZ1         |LOXM771128Q67 |
 |natyeudall       |NaYe    |960429   |Version199604.xls |GP4         |YEXN960429ES3 |
 
-- NSS:	Convertimos la columna NSS de octal a decimal.
+- **NSS:**	Convertimos la columna NSS de octal a decimal.
 
 |NSS_nuevo   |NSS_previo    |
 |:-----------|:-------------|
@@ -126,7 +130,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |31150457917 |350055442075  |
 |43371167324 |503107677134  |
 
-- Pasaporte:	Convertimos la columna pasaporte de hexadecimal a decimal. 
+- **Pasaporte:**	Convertimos la columna pasaporte de hexadecimal a decimal. 
 
 |Pasaporte_nuevo   |Pasaporte_previo |
 |:-----------------|:----------------|
@@ -137,4 +141,7 @@ https://docs.google.com/spreadsheets/d/1NIxdvoID99uY4LsrdYndkxtQMfldG1TB/edit#gi
 |94726758893539665 |150897C3E92D151  |
 |78118704560401635 |115888C43A2ECE3  |
 
-El cálculo del curp se hizo tomando como base https://github.com/epalomeque/py-curprfc
+Nota: Para el cálculo del curp se hizo tomando como base https://github.com/epalomeque/py-curprfc
+
+
+
